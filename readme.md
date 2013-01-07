@@ -22,7 +22,7 @@ Copy the sample config file to ``application/config/smartystreets.php``, and inp
 ## Usage
 
 ```
-$array = SmartyStreets::lookup(array(
+$array = SmartyStreets::run(array(
     'street' => '',
     'city' => '',
     'state' => '',
