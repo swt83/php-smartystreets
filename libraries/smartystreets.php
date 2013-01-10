@@ -35,16 +35,20 @@ class SmartyStreets {
                 // return
                 return false;
             }
+            else
+            {
+                // capitalize
+                $input[$field] = strtoupper($input[$field]);
+            }
         }
         
         // hash
         $hash = static::hash($input);
 
         // check
-        $check = DB::table('smartystreets')->where('hash', '=', $hash)->first();
+        $check = DB::table('smartystreets')->where('original_hash', '=', $hash)->first();
         
         // if found...
-        $lookup = false;
         if ($check)
         {
             // We don't want to always used pre-existing records,
