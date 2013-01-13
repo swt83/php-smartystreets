@@ -1,11 +1,11 @@
 <?php
 
 /**
- * A LaravelPHP Package for working w/ the SmartyStreets API.
+ * A Laravel 3.x package for working w/ the SmartyStreets API.
  *
  * @package    SmartyStreets
  * @author     Scott Travis <scott.w.travis@gmail.com>
- * @link       http://github.com/swt83
+ * @link       http://github.com/swt83/laravel-smartystreets
  * @license    MIT License
  */
 
@@ -227,7 +227,7 @@ class SmartyStreets {
      * @param   array   $input
      * @return  string
      */
-    protected static function hash($input)
+    public static function hash($input)
     {
         return md5(strtoupper($input['street'].'+'.$input['city'].'+'.$input['state'].'+'.$input['zip']));
     }
