@@ -10,7 +10,7 @@
  */
 
 class SmartyStreets {
-    
+
     /**
      * Clean an address.
      *
@@ -41,13 +41,13 @@ class SmartyStreets {
                 $input[$field] = strtoupper($input[$field]);
             }
         }
-        
+
         // hash
         $hash = static::hash($input);
 
         // check
         $check = DB::table('smartystreets')->where('original_hash', '=', $hash)->first();
-        
+
         // if found...
         if ($check)
         {
@@ -192,19 +192,19 @@ class SmartyStreets {
     protected static function api($input)
     {
         // query
-        $url = 'https://api.qualifiedaddress.com/street-address/?'.
+        $url = 'https://api.smartystreets.com/street-address/?'.
             'street='.urlencode($input['street']).'&'.
             'city='.urlencode($input['city']).'&'.
             'state='.urlencode($input['state']).'&'.
             'zipcode='.urlencode($input['zip']).'&'.
             'auth-token='.urlencode(Config::get('smartystreets.api_key'));
-        
+
         // submit and decode
         $response = json_decode(file_get_contents($url));
-        
+
         // if smarty gave us an answer...
         if (!empty($response))
-        {   
+        {
             // return
             return array(
                 'street' => $response[0]->delivery_line_1,
