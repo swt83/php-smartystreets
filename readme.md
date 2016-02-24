@@ -8,7 +8,7 @@ Normal install via Composer.
 
 ## Usage
 
-```
+```php
 use Travis\SmartyStreets;
 
 $response = SmartyStreets::run([
