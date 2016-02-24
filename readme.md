@@ -1,33 +1,29 @@
-# SmartyStreets for Laravel 3
+# SmartyStreets
 
-SmartyStreets is an online API for standardizing mailing addresses.  This package will throw addresses against the API and return the cleaned address, and will store the result in your database so you never get charged for the same lookup twice.
+A PHP library for working w/ the SmartyStreets API.
 
 ## Install
 
-In your ``application/bundles.php`` add the following:
-
-```
-'smartystreets' => array('auto' => true),
-```
-
-### Configuration
-
-Copy the sample config file to ``application/config/smartystreets.php``, and input the necessary information.
-
-### Migrations
-
-* Setup framework: ``$ php artisan migrate:install``
-* Add new table: ``$ php artisan migrate smartystreets``
+Normal install via Composer.
 
 ## Usage
 
 ```
-$array = SmartyStreets::run(array(
-    'street' => '',
-    'city' => '',
-    'state' => '',
-    'zip' => '',
-));
+use Travis\SmartyStreets;
+
+$response = SmartyStreets::run([
+	'auth_id' => 'foo',
+	'auth_token' => 'bar',
+	#
+    'street' => '1600 Pennsylvania Ave NW',
+    'city' => 'Washington',
+    'state' => 'DC',
+    'zip' => '20500',
+]);
 ```
 
-The response array will contain the cleaned address, and additional information from the lookup record.  The method uses a database table to cache responses for a year before looking the same address up again.
+Notice that the payload must include the ``auth_id`` and ``auth_token`` values.
+
+## Caching
+
+Because the API charges you per lookup, you will want to cache the responses.
