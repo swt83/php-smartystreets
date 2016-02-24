@@ -14,7 +14,6 @@ use Travis\SmartyStreets;
 $response = SmartyStreets::run([
 	'auth_id' => 'foo',
 	'auth_token' => 'bar',
-	#
     'street' => '1600 Pennsylvania Ave NW',
     'city' => 'Washington',
     'state' => 'DC',
